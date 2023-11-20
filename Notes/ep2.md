@@ -2,6 +2,9 @@
 
 ## Episode 2
 
+### Igniting our App
+
+
 1. What is npm? Read
    Ans - npm does not stands for node package manager. It is anything but not node pacakge manager. Though it does manage the packages. It doesn't have any exact fullform.
    It is a std. repository for all the packages. Biggest package manager All the packages libraries are hosted in npm. Whatever package, utility or library you want to use in your project? it is there in npm.Create-React project has already builtin npm inside it. But you can add it externally in your project.And it manages pacakges in your projects. Let's add npm in your project.

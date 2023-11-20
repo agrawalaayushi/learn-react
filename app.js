@@ -1,38 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const parent = React.createElement(
-  "div",
-  {
-    id: "parent",
-    className: "heading",
-  },
-  [
-    React.createElement(
-      "div",
-      {
-        id: "child",
-        className: "heading",
-      },
-      [
-        React.createElement("h1", {}, "I'm child1 h1 tag"),
-        React.createElement("h2", {}, "I'm child1 h2 tag"),
-      ]
-    ),
-    React.createElement(
-      "div",
-      {
-        id: "child1",
-        className: "heading2",
-      },
-      [
-        React.createElement("h1", {}, "I'm child2 h3 tag"),
-        React.createElement("h2", {}, "I'm child2 h4 tag"),
-      ]
-    ),
-  ],
-);
-const root1 = ReactDOM.createRoot(document.getElementById("root"));
-root1.render(parent);
+// React.createElement => Object => when we render this object onto DOM => becomes HTMLElemet(render)
 
-console.log(parent);
+// created a react object
+const heading = React.createElement(
+  "h1",
+  { id: "heading", className: "heading" },
+  "My app from scratch"
+);
+
+/* ReactDOM takes this object and converts it to HTML and push it to browser. 
+By pushing means, it will replace completely instead of appending*/
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// create html element
+root.render(heading);
