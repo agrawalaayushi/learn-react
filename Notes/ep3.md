@@ -45,3 +45,10 @@ Parcel does not do the job by itself. It is like a manager. It gives the job to 
  * Babel is Javscript compiler. It transpiles the code. 
  * When some old browser don't understand the newer ES6 code, Babel transpiles the code to a code that older browser can understand.
  * Babel reads token by token understand it and starts converting. and constructs an abstract syntax tree AST tree. There is a huge algo behind it. 
+
+ 10. React Components - 
+    1. Class Based Components (old)
+    2. Functional Based Components (new) used by 99% people now.
+
+11. Functional Component -
+It is a function that returns JSX.

@@ -1,3 +1,5 @@
+## Episode 1
+
 📖 Here is the Summary of what i had learnt.
 
 👉 How to use react into project?
@@ -7,8 +9,8 @@
  -> CDN is content delivery network where react library is hosted and we are using that via CDN links.
 
 👉 When we use react via CDN link there are two CDN link?
--> 1.react.development.js -> it is the file where core react is written inside it.
-      2.react-dom.development.js -> it is the file which is used for DOM operations or modified the DOM(Document Object Model).
+->  1.react.development.js -> it is the file where core react is written inside it.
+    2.react-dom.development.js -> it is the file which is used for DOM operations or modified the DOM(Document Object Model).
 
 👉 Why is there are two CDN link?
 -> Because react does not only works on browser it also works on mobile as react native. so there are different methods on browser and mobile that's why there are two files.

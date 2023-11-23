@@ -1,9 +1,6 @@
-## Episode 1
-
 ## Episode 2
 
 ### Igniting our App
-
 
 1. What is npm? Read
    Ans - npm does not stands for node package manager. It is anything but not node pacakge manager. Though it does manage the packages. It doesn't have any exact fullform.
