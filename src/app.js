@@ -7,6 +7,7 @@ import  {createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import AboutUs from "./components/about.js";
 import ContactUs from "./components/contact.js";
 import Cart from "./components/cart.js";
+import ErrorPage from "./components/error.js";
 
 // React.createElement => Object => when we render this object onto DOM => becomes HTMLElemet(render)
 
@@ -28,7 +29,6 @@ const App = () => {
     <div className="res-contianer">
       <Header />
       <Outlet />
-      {/* <RestaurantList /> */}
     </div>
   );
 };
@@ -37,6 +37,7 @@ const appRouter  = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: "/",
