@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client.js";
 import RestaurantList from "./components/restaurantList.js";
 import "./app.css";
 import Header from "./components/header.js";
-import  {createBrowserRouter, RouterProvider } from "react-router-dom";
+import  {createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import AboutUs from "./components/about.js";
 import ContactUs from "./components/contact.js";
 import Cart from "./components/cart.js";
@@ -27,7 +27,8 @@ const App = () => {
   return (
     <div className="res-contianer">
       <Header />
-      <RestaurantList />
+      <Outlet />
+      {/* <RestaurantList /> */}
     </div>
   );
 };
@@ -35,20 +36,31 @@ const App = () => {
 const appRouter  = createBrowserRouter([
   {
     path: "/",
-    element: <App/>
+    element: <App/>,
+    children: [
+      {
+        path: "/",
+        element: <RestaurantList/>
+      },
+      {
+        path: "/home",
+        element: <RestaurantList/>
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs/>
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs/>
+      },
+      {
+        path: "/cart",
+        element: <Cart/>
+      }
+    ]
   },
-  {
-    path: "/about-us",
-    element: <AboutUs/>
-  },
-  {
-    path: "/contact-us",
-    element: <ContactUs/>
-  },
-  {
-    path: "/cart",
-    element: <Cart/>
-  }
+  
 ])
 
 
