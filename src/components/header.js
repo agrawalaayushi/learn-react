@@ -14,10 +14,10 @@ const Header = () => {
       </div>
       <div >
         <ul className="nav-items">
-          <li className="item"><a>Home</a></li>
-          <li className="item"><a>About Us</a></li>
-          <li className="item"><a>Contact Us</a></li>
-          <li className="item"><a>Cart</a></li>
+          <li className="item"><a href="/">Home</a></li>
+          <li className="item"><a href="/about-us">About Us</a></li>
+          <li className="item"><a href="/contact-us">Contact Us</a></li>
+          <li className="item"><a href="/cart">Cart</a></li>
           <button className="login-btn" onClick={handleLogin}>{login ? "Login" : "Logout"}</button>
         </ul>
       </div>

@@ -3,6 +3,11 @@ import ReactDOM from "react-dom/client.js";
 import RestaurantList from "./components/restaurantList.js";
 import "./app.css";
 import Header from "./components/header.js";
+import  {createBrowserRouter, RouterProvider } from "react-router-dom";
+import AboutUs from "./components/about.js";
+import ContactUs from "./components/contact.js";
+import Cart from "./components/cart.js";
+
 // React.createElement => Object => when we render this object onto DOM => becomes HTMLElemet(render)
 
 // created a react object; React.createElement is core of react
@@ -16,23 +21,45 @@ const heading = React.createElement(
 // JSX => Babel transpiles it to React.createELement => ReactElement JS object  => HTMLElement (render)
 const jsxHeading = <h1 id="jsxheading">Hello from using JSX</h1>;
 
-/* ReactDOM takes this object and converts it to HTML and push it to browser. 
-By pushing means, it will replace completely instead of appending*/
-const root = ReactDOM.createRoot(document.getElementById("root"));
+
 
 const App = () => {
   return (
     <div className="res-contianer">
       <Header />
-
       <RestaurantList />
     </div>
   );
 };
 
-export default App;
-// create html element
-root.render(<App />);
+const appRouter  = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>
+  },
+  {
+    path: "/about-us",
+    element: <AboutUs/>
+  },
+  {
+    path: "/contact-us",
+    element: <ContactUs/>
+  },
+  {
+    path: "/cart",
+    element: <Cart/>
+  }
+])
 
+
+/* ReactDOM takes this object and converts it to HTML and push it to browser. 
+By pushing means, it will replace completely instead of appending*/
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// create html element
+// root.render(<App />);
+
+
+root.render(<RouterProvider  router={appRouter}/>);
 // console.log(heading);
 // console.log(jsxHeading);
