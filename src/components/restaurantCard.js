@@ -1,8 +1,8 @@
 import React from "react";
+import { IMG_URL } from "../util";
 
 const RestaurantCard = (props) => {
-  const IMG_URL =
-    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+  
 
   const { name, cloudinaryImageId, costForTwo, avgRating, sla } = props.data;
 
