@@ -1,77 +1,25 @@
-/**
- * <div id="parent">
-    <div id="child1">
-        <h1>I'm child1 h1 tag</h1>
-        <h2>I'm child1 h2 tag</h2>
-    </div>
-    <div id="child2">
-        <h1>I'm child2 h1 tag</h1>
-        <h2>I'm child2 h2 tag</h2>
-    </div>
-</div>
- */
+import React from "react";
+import ReactDOM from "react-dom";
 
-const parent = React.createElement(
-  "div",
-  {
-    id: "parent",
-    className: "heading",
-  },
-  [
-    React.createElement(
-        "div",
-        {
-          id: "child1",
-          className: "heading",
-        },
-        [
-          React.createElement(
-            "h1",
-            {
-              id: "child1h1",
-              className: "heading",
-            },
-            "I'm child1 h1 tag"
-          ),
-          React.createElement(
-            "h2",
-            {
-              id: "child1h2",
-              className: "heading",
-            },
-            "I'm child1 h2 tag"
-          ),
-        ]
-      ),
-      React.createElement(
-        "div",
-        {
-          id: "child2",
-          className: "heading2",
-        },
-        [
-          React.createElement(
-            "h1",
-            {
-              id: "child2h1",
-              className: "heading2",
-            },
-            "I'm child2 h1 tag"
-          ),
-          React.createElement(
-            "h2",
-            {
-              id: "child2h2",
-              className: "heading2",
-            },
-            "I'm child2 h2 tag"
-          ),
-        ]
-      )
-  ]
- 
+// React.createElement => Object => when we render this object onto DOM => becomes HTMLElemet(render)
+
+// created a react object; React.createElement is core of react
+const heading = React.createElement(
+  "h1",
+  { id: "heading", className: "heading" },
+  "My app from scratch from create element"
 );
-const root1 = ReactDOM.createRoot(document.getElementById("root"));
-root1.render(parent);
 
-console.log(parent);
+// JSX (transpiled before it reaches the JS engine)  
+// JSX => Babel transpiles it to React.createELement => ReactElement JS object  => HTMLElement (render)
+const jsxHeading = <h1 id="jsxheading">Hello from using JSX</h1>
+
+/* ReactDOM takes this object and converts it to HTML and push it to browser. 
+By pushing means, it will replace completely instead of appending*/
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// create html element
+root.render(jsxHeading);
+
+console.log(heading);
+console.log(jsxHeading)
