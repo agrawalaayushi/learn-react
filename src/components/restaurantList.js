@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import RestaurantCard from "./restaurantCard";
 import Search from "./search";
 import ShimmerView from "./shimmerView";
-import { SWIGGY_URL, CORS_PROXY_TEMPORARY_API_KEY } from "../util";
+import { SWIGGY_URL, CORS_PROXY_TEMPORARY_API_KEY } from "../utils/constants";
 
 const RestaurantList = () => {
   const [resList, setResList] = useState([]);

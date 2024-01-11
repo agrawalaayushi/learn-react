@@ -8,6 +8,7 @@ import AboutUs from "./components/about.js";
 import ContactUs from "./components/contact.js";
 import Cart from "./components/cart.js";
 import ErrorPage from "./components/error.js";
+import RestaurantMenu from "./components/restaurantMenu.js";
 
 // React.createElement => Object => when we render this object onto DOM => becomes HTMLElemet(render)
 
@@ -46,6 +47,10 @@ const appRouter  = createBrowserRouter([
       {
         path: "/home",
         element: <RestaurantList/>
+      },
+      {
+        path: "/restaurant/:resId",
+        element: <RestaurantMenu/>
       },
       {
         path: "/about-us",
