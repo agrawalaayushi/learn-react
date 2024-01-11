@@ -24,7 +24,7 @@ const RestaurantList = () => {
 
     // optional chaining
     response =
-      response?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+      response?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
 
     setResList(response);
@@ -46,20 +46,20 @@ const RestaurantList = () => {
   };
 
   const TopRatedRestaurant = () => {
-    return <button onClick={handleTopRated}>Top Rated Restaurants</button>;
+    return <button onClick={handleTopRated} className="bg-white shadow-md  text-black border  border-gray-400 rounded-full ml-4 px-2 py-1.5">Top Rated Restaurants</button>;
   };
 
   if (resList && resList.length === 0) return <ShimmerView />;
 
   return (
-    <div className="res-container">
+    <div className="m-5">
       <>
-        <div className="filter-section">
+        <div className="flex justify-between my-4">
           <Search handleSearch={handleSearch} />
           <TopRatedRestaurant />
         </div>
 
-        <ul className="res-list">
+        <ul className="flex justify-evenly flex-wrap mt-15">
           {filteredRestaurant &&
             filteredRestaurant.map(({ info }) => {
               return <RestaurantCard key={info.id} data={info} />;
