@@ -9,7 +9,8 @@ const RestaurantMenu = () => {
 
   if (resMenu === null) return <h3>Loadingg...</h3>;
 
-  console.log("resMenu", resMenu);
+  console.log("resMenu", resMenu?.cards[0]?.card?.card.info);
+  const resInfo = resMenu?.cards[0]?.card?.card.info;
   const {
     name,
     avgRating,
@@ -17,20 +18,30 @@ const RestaurantMenu = () => {
     totalRatingsString,
     cuisines,
     expectationNotifiers,
-  } = resMenu?.cards[0]?.card?.card.info;
+  } = resInfo;
+
+  const { slaString } = resInfo.sla;
   const menu =
-    resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card.card;
+    resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card.card;
 
   const MenuItems = () => {
-    return ( <div>
+    return (
+      <div>
         <h1 className="text-lg font-bold text-black  my-6">
           {menu.title}({menu.itemCards.length})
         </h1>
         <ul>
           {menu.itemCards.map((item) => {
-            const { name, id, price, imageId, isVeg, defaultPrice, description } =
-              item.card.info;
-  
+            const {
+              name,
+              id,
+              price,
+              imageId,
+              isVeg,
+              defaultPrice,
+              description,
+            } = item.card.info;
+
             return (
               <li
                 key={id}
@@ -54,8 +65,8 @@ const RestaurantMenu = () => {
             );
           })}
         </ul>
-      </div>)
-   
+      </div>
+    );
   };
 
   return (
@@ -64,9 +75,7 @@ const RestaurantMenu = () => {
         <div>
           <h1 className="font-bold text-xl">{name}</h1>
           <h3 className="font-light text-md text-slate-400">
-            {cuisines.map((cuisine) => {
-              <span>{cuisine}</span>;
-            })}
+            {cuisines.join(", ")}
           </h3>
         </div>
         <div className="text-center	p-2  flex-col border-[1px] border-gray-200 rounded-sm shadow-lg">
@@ -88,6 +97,9 @@ const RestaurantMenu = () => {
           <span className="text-slate-400 font-light">
             {expectationNotifiers[0].text}
           </span>
+        </div>
+        <div className="font-bold border-dashed py-6 border-b-[1px] border-gray-300 text-black">
+          {slaString} &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;{costForTwoMessage}
         </div>
       </div>
       <MenuItems />
