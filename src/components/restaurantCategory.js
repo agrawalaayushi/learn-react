@@ -21,7 +21,7 @@ const RestaurantMenuCategory = ({ data, showList, setShowIndex }) => {
           <span>
             {title}({itemCards.length})
           </span>
-          <span>{showList ? "⬆️" : "⬇️"}</span>
+          <button>{showList ? "⬆️" : "⬇️"}</button>
         </div>
 
         {/**Accordion Body */}
