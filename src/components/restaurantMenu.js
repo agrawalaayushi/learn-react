@@ -9,7 +9,7 @@ const RestaurantMenu = () => {
 
   if (resMenu === null) return <h3>Loadingg...</h3>;
 
-  console.log("resMenu", resMenu?.cards[0]?.card?.card.info);
+  // console.log("resMenu", resMenu?.cards[0]?.card?.card.info);
   const resInfo = resMenu?.cards[0]?.card?.card.info;
   const {
     name,
@@ -22,8 +22,9 @@ const RestaurantMenu = () => {
 
   const { slaString } = resInfo.sla;
   const menu =
-    resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card.card;
+    resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card.card;
 
+    console.log(resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR)
   const MenuItems = () => {
     return (
       <div>

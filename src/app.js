@@ -3,12 +3,15 @@ import ReactDOM from "react-dom/client.js";
 import RestaurantList from "./components/restaurantList.js";
 import "./app.css";
 import Header from "./components/header.js";
-import  {createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import AboutUs from "./components/about.js";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+// import AboutUs from "./components/about.js";
 import ContactUs from "./components/contact.js";
 import Cart from "./components/cart.js";
 import ErrorPage from "./components/error.js";
 import RestaurantMenu from "./components/restaurantMenu.js";
+import { useOnlineStatus } from "./utils/useOnlineStatus.js";
+import { lazy, Suspense } from "react";
+// import Grocery from "./components/grocery.js";
 
 // React.createElement => Object => when we render this object onto DOM => becomes HTMLElemet(render)
 
@@ -23,6 +26,8 @@ const heading = React.createElement(
 // JSX => Babel transpiles it to React.createELement => ReactElement JS object  => HTMLElement (render)
 const jsxHeading = <h1 id="jsxheading">Hello from using JSX</h1>;
 
+const AboutUs = lazy(() => import("./components/about.js"));
+const Grocery = lazy(() => import("./components/grocery.js"));
 
 
 const App = () => {
@@ -34,41 +39,51 @@ const App = () => {
   );
 };
 
-const appRouter  = createBrowserRouter([
+const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
-    errorElement: <ErrorPage/>,
+    element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
-        element: <RestaurantList/>
+        element: <RestaurantList />,
       },
       {
         path: "/home",
-        element: <RestaurantList/>
+        element: <RestaurantList />,
       },
       {
         path: "/restaurant/:resId",
-        element: <RestaurantMenu/>
+        element: <RestaurantMenu />,
       },
       {
         path: "/about-us",
-        element: <AboutUs/>
+        element: (
+          <Suspense fallback={<h1>Loadingg</h1>}>
+            <AboutUs />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense>
+            <Grocery />
+          </Suspense>
+        ),
       },
       {
         path: "/contact-us",
-        element: <ContactUs/>
+        element: <ContactUs />,
       },
       {
         path: "/cart",
-        element: <Cart/>
-      }
-    ]
+        element: <Cart />,
+      },
+    ],
   },
-  
-])
-
+]);
 
 /* ReactDOM takes this object and converts it to HTML and push it to browser. 
 By pushing means, it will replace completely instead of appending*/
@@ -77,7 +92,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // create html element
 // root.render(<App />);
 
-
-root.render(<RouterProvider  router={appRouter}/>);
+root.render(<RouterProvider router={appRouter} />);
 // console.log(heading);
 // console.log(jsxHeading);
