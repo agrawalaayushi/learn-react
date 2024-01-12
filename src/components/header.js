@@ -14,10 +14,13 @@ const Header = () => {
 
   return (
     <div className="flex justify-between bg-purple-800 items-center">
-      <img className="w-16 h-16 m-3" src={logo} />
+      <Link to="/" className="flex items-center m-3">
+        <img className="w-16 h-16" src={logo} />
+        <h1 className="font-mono italic text-3xl font-semibold text-white ml-5">Cheenu's</h1>
+      </Link>
 
       <ul className="flex items-center pt-3 m-3 text-slate-50 ">
-        <li>{onlineStatus ? "🟢": "🔴"}</li>
+        <li>{onlineStatus ? "🟢" : "🔴"}</li>
         <li className="px-3">
           <Link to="/">Home</Link>
         </li>
