@@ -1,15 +1,23 @@
 import { useParams } from "react-router-dom";
 import { IMG_URL } from "../utils/constants";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantMenuCategory from "./restaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
+  const [showIndex, setShowIndex] = useState(null);
   const { resId } = useParams();
 
   const resMenu = useRestaurantMenu(resId);
 
   if (resMenu === null) return <h3>Loadingg...</h3>;
 
-  // console.log("resMenu", resMenu?.cards[0]?.card?.card.info);
+  const handleShowCategory = (index) => {
+    // if clicked on the already opened category again, close it.
+    if (index === showIndex) return setShowIndex(null);
+    setShowIndex(index);
+  };
+
   const resInfo = resMenu?.cards[0]?.card?.card.info;
   const {
     name,
@@ -21,52 +29,31 @@ const RestaurantMenu = () => {
   } = resInfo;
 
   const { slaString } = resInfo.sla;
-  const menu =
-    resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card.card;
 
-    console.log(resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR)
+  const categories =
+    resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (category) => {
+        return (
+          category?.card?.card?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+        );
+      }
+    );
+
+
   const MenuItems = () => {
     return (
-      <div>
-        <h1 className="text-lg font-bold text-black  my-6">
-          {menu.title}({menu.itemCards.length})
-        </h1>
-        <ul>
-          {menu.itemCards.map((item) => {
-            const {
-              name,
-              id,
-              price,
-              imageId,
-              isVeg,
-              defaultPrice,
-              description,
-            } = item.card.info;
-
-            return (
-              <li
-                key={id}
-                className="flex justify-between my-3 pb-5 border-b-[1px] border-gray-300"
-              >
-                <div className="w-3/4">
-                  <div>{isVeg ? "🫛" : "🍗"}</div>
-                  <h3 className="font-semibold text-slate-900">{name}</h3>
-                  <p className="font-semibold text-slate-900">
-                    ₹{(defaultPrice || price) / 100}
-                  </p>
-                  <p className="font-light text-sm text-slate-400">
-                    {description}
-                  </p>
-                </div>
-                <img
-                  className=" w-28 h-20 object-cover rounded-md"
-                  src={IMG_URL + imageId}
-                />
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <ul>
+        {/**Categories accordions */}
+        {categories.map((category, index) => (
+          <RestaurantMenuCategory
+            key={category?.card?.card?.title}
+            data={category?.card?.card}
+            showList={index === showIndex ? true : false}
+            setShowIndex={() => handleShowCategory(index)}
+          />
+        ))}
+      </ul>
     );
   };
 

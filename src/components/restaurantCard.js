@@ -14,7 +14,7 @@ const RestaurantCard = (props) => {
   } = props.data;
 
   const { discountTag, header, subHeader } = aggregatedDiscountInfoV3;
-  console.log(aggregatedDiscountInfoV3);
+
   return (
     <li className="w-60 h-56 shadow-lg m-[10px]  rounded-xl transition transform ease-in-out duration-100 hover:scale-95 ">
       <Link to={`/restaurant/${id}`} className="w-full h-full cursor-pointer">
@@ -24,9 +24,9 @@ const RestaurantCard = (props) => {
             src={IMG_URL + cloudinaryImageId}
           />
           <div className="bg-gradient-to-b drop-shadow-xl	text-lg h-1/4 from-[#1b1e2400] to-[#1b1e24] absolute px-2 w-full bottom-0 left-0 font-bold text-md text-white">
-            {(aggregatedDiscountInfoV3["discountTag"] ? discountTag : " ") +
-              (aggregatedDiscountInfoV3["header"] && header + " ") +
-              (aggregatedDiscountInfoV3["subHeader"] && subHeader)}
+            {(discountTag ? discountTag : " ") +
+              (header && header + " ") +
+              (subHeader && subHeader)}
           </div>
         </div>
 
@@ -47,8 +47,10 @@ export const withPromotedLabel = (RestaurantCard) => {
   return (props) => {
     return (
       <div>
-        <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Promoted</label>
-        <RestaurantCard  {...props}/>
+        <label className="absolute bg-black text-white m-2 p-2 rounded-lg">
+          Promoted
+        </label>
+        <RestaurantCard {...props} />
       </div>
     );
   };

@@ -9,7 +9,6 @@ import ContactUs from "./components/contact.js";
 import Cart from "./components/cart.js";
 import ErrorPage from "./components/error.js";
 import RestaurantMenu from "./components/restaurantMenu.js";
-import { useOnlineStatus } from "./utils/useOnlineStatus.js";
 import { lazy, Suspense } from "react";
 // import Grocery from "./components/grocery.js";
 
