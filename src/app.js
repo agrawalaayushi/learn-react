@@ -1,16 +1,15 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client.js";
-import RestaurantList from "./components/restaurantList.js";
-import "./app.css";
-import Header from "./components/header.js";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-// import AboutUs from "./components/about.js";
+import { Provider } from "react-redux";
+import appStore from "./store/appStore.js";
+import RestaurantList from "./components/restaurantList.js";
+import Header from "./components/header.js";
 import ContactUs from "./components/contact.js";
 import Cart from "./components/cart.js";
 import ErrorPage from "./components/error.js";
 import RestaurantMenu from "./components/restaurantMenu.js";
-import { lazy, Suspense } from "react";
-// import Grocery from "./components/grocery.js";
+import "./app.css";
 
 // React.createElement => Object => when we render this object onto DOM => becomes HTMLElemet(render)
 
@@ -28,13 +27,14 @@ const jsxHeading = <h1 id="jsxheading">Hello from using JSX</h1>;
 const AboutUs = lazy(() => import("./components/about.js"));
 const Grocery = lazy(() => import("./components/grocery.js"));
 
-
 const App = () => {
   return (
-    <div className="res-contianer">
-      <Header />
-      <Outlet />
-    </div>
+    <Provider store={appStore}>
+      <div className="res-contianer">
+        <Header />
+        <Outlet />
+      </div>
+    </Provider>
   );
 };
 

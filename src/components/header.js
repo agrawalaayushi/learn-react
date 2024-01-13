@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../images/logo.png";
 import { useOnlineStatus } from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [login, setLogin] = useState(0);
+  const items = useSelector((state) => state.cart.items);
 
   const handleLogin = () => {
     setLogin(!login);
@@ -34,10 +36,10 @@ const Header = () => {
           <Link to="/contact-us">Contact Us</Link>
         </li>
         <li className="px-3">
-          <Link to="/cart">Cart</Link>
+          <Link to="/cart">Cart ({items.length})</Link>
         </li>
         <button
-          className="border-solid border-2 border-slate-50 rounded-md p-2"
+          className="border-solid border-2 border-slate-50  hover:bg-purple-700 rounded-md p-2"
           onClick={handleLogin}
         >
           {login ? "Login" : "Logout"}

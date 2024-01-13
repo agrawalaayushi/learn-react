@@ -1,12 +1,19 @@
 import { IMG_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../store/cartSlice";
 
 const CategoryItemList = ({ items }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (item) => {
+    dispatch(addItem(item));
+  };
+
   return (
     <ul>
       {items.map((item) => {
         const { name, id, price, imageId, isVeg, defaultPrice, description } =
           item.card.info;
-
         return (
           <li
             key={id}
@@ -25,7 +32,10 @@ const CategoryItemList = ({ items }) => {
                 className="w-28 h-20 object-cover rounded-md"
                 src={IMG_URL + imageId}
               />
-              <button className="bg-white text-xs relative -top-[15px] left-[18px] text-green-600 shadow-md rounded-md py-1 px-5">
+              <button
+                className="bg-white text-xs relative -top-[15px] left-[18px] text-green-600 hover:bg-green-50 active:border-green-700 border-transparent border-[1px]  shadow-md rounded-md py-1 px-5"
+                onClick={() => handleAddToCart(item)}
+              >
                 Add +
               </button>
             </div>

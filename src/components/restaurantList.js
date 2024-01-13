@@ -31,7 +31,7 @@ const RestaurantList = () => {
       // },
     });
     response = await response.json();
-    console.log(response);
+    // console.log(response);
 
     // optional chaining
     response =
@@ -42,7 +42,6 @@ const RestaurantList = () => {
     setFilteredRestaurant(response);
   };
 
-  console.log("resList", resList);
   if (resList.length === 0) return <ShimmerView />;
 
   const handleTopRated = () => {
