@@ -46,7 +46,7 @@ const AboutUs = () => {
             using Swiggy live API
           </span>
         </h4>
-        <h4 className="font-bold text-xl text-slate-950">Data Management Store: <span className="font-normal text-md text-slate-600">Redux</span></h4>
+        <h4 className="font-bold text-xl text-slate-950">Data Management Store: <span className="font-normal text-md text-slate-600">redux, react-redux</span></h4>
         <h4 className="font-bold text-xl text-slate-950">Created Custom React Hooks: <span className="font-normal text-md text-slate-600">using React Hooks `useState` `useEffect`</span> </h4>
       </div>
     </div>
