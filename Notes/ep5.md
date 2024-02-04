@@ -41,3 +41,38 @@ React uses this ALgo.   For. e.g we create 7 cards in a container. After applyin
 
 It is fast because - 
 React is doing efficient DOM manipulation. How? because React has virtual DOM. Virtual DOM just JS representation of Actual DOM.React used it and got popular. Virtual DOM is not react thing. It came way long back.  It can find out the diff and updates the DOM.
+
+## useEffect()
+
+Gets called after render(). useEffect function takes two parameter
+
+1. callback function
+2. takes dependency array
+    * By default, it will always gets called after render() atleast. 
+    * if no dependency => then useEffect is called on after every render
+    * if dependency array is empty - [] => called on initial render only. (just once)
+    * if you have dependency array is [btnNameReact] => called everytime btnNameReact is updated. 
+
+Case 1 - no dependency is passed => gets called after every render
+`
+    useEffect(() => {
+        //do something
+     }
+    )
+`
+
+Case 2 - dependency is passed as empty array => gets called after first ren
+`
+    useEffect(() => {
+        //do something
+     }, []
+    )
+`
+
+Case 3 - dependency is passed  => gets called after render() and whenver that variable updates.
+`
+    useEffect(() => {
+        //do something
+     }, [variable]
+    )
+`

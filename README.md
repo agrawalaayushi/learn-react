@@ -21,3 +21,12 @@ Learning react 18  Zero to Hero.
 - Tree shaking - remove used code
 - transpilation
 - lazy mode
+
+
+## Redux Toolkit
+
+- Install @reduxjs/toolkit and reacat-redux
+- Build our store
+- connect our store to the App. 
+- create card slice
+- dispatch an (action)
